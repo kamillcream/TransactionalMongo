@@ -20,7 +20,7 @@ Add the dependency from Maven Central:
 
 ```gradle
 dependencies {
-    implementation "io.github.kamillcream:transactional-mongo:1.0.9.2"
+    implementation 'io.github.kamillcream:transactional-mongo-core:1.0.0'
 }
 ```
 ---
