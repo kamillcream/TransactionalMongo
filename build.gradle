@@ -11,7 +11,7 @@ plugins {
 }
 
 group = 'io.github.kamillcream.mpa'
-version = '1.0.9.1'
+version = '1.0.0'
 description = 'JPA-like dirty checking for Spring Data MongoDB'
 
 java {
@@ -32,7 +32,7 @@ signing {
 mavenPublishing {
     publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
 
-    coordinates("io.github.kamillcream", "transactional-mongo", "1.0.9.1")
+    coordinates("io.github.kamillcream", "transactional-mongo-core", "1.0.0")
 
     pom {
         name = "TransactionalMongo"
