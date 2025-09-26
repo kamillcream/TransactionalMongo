@@ -1,0 +1,80 @@
+import com.vanniktech.maven.publish.SonatypeHost
+import com.vanniktech.maven.publish.JavaLibrary
+import com.vanniktech.maven.publish.JavadocJar
+
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.6'
+	id 'io.spring.dependency-management' version '1.1.7'
+    id "com.vanniktech.maven.publish" version "0.28.0"
+    id 'signing'
+}
+
+group = 'io.github.kamillcream.mpa'
+version = '1.0.9.1'
+description = 'JPA-like dirty checking for Spring Data MongoDB'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(17)
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+signing {
+    useGpgCmd()
+    sign publishing.publications
+}
+
+mavenPublishing {
+    publishToMavenCentral(SonatypeHost.CENTRAL_PORTAL)
+
+    coordinates("io.github.kamillcream", "transactional-mongo", "1.0.9.1")
+
+    pom {
+        name = "TransactionalMongo"
+        description = "JPA-like dirty checking for Spring Data MongoDB"
+        inceptionYear = "2025"
+        url = "https://github.com/kamillcream/TransactionalMongo"
+        licenses {
+            license {
+                name = "Apache License, Version 2.0"
+                url = "https://www.apache.org/licenses/LICENSE-2.0.txt"
+                distribution = "repo"
+            }
+        }
+        developers {
+            developer {
+                id = "kamillcream"
+                name = "Jinyoung Park"
+                email = "kamillcream1@gmail.com"
+                url = "https://github.com/kamillcream"
+            }
+        }
+        scm {
+            url = "https://github.com/kamillcream/TransactionalMongo"
+            connection = "scm:git:https://github.com/kamillcream/TransactionalMongo.git"
+            developerConnection = "scm:git:ssh://git@github.com/kamillcream/TransactionalMongo.git"
+        }
+    }
+}
+
+dependencies {
+    implementation("org.springframework.boot:spring-boot-starter:3.2.4")
+    implementation("org.springframework.boot:spring-boot-starter-data-mongodb:3.2.4")
+    implementation("org.springframework.boot:spring-boot-starter-aop:3.2.4")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.17.2")
+    implementation("org.springframework.boot:spring-boot-starter-web:3.2.4")
+
+    compileOnly("org.projectlombok:lombok:1.18.32")
+    annotationProcessor("org.projectlombok:lombok:1.18.32")
+
+    testImplementation("org.springframework.boot:spring-boot-starter-test:3.2.4")
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}

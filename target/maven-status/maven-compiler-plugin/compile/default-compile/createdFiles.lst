@@ -1,0 +1,7 @@
+io/github/kamillcream/mpa/TransactionalMongoAspect.class
+io/github/kamillcream/mpa/MongoEntityLoader.class
+io/github/kamillcream/mpa/MongoContext.class
+io/github/kamillcream/mpa/MongoUnitOfWork.class
+io/github/kamillcream/mpa/TransactionalMongo.class
+io/github/kamillcream/mpa/DiffUtil.class
+io/github/kamillcream/mpa/DemoApplication.class
